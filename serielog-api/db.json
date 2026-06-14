@@ -1,7 +1,7 @@
 {
   "series": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Breaking Bad",
       "genero": "Crime / Drama",
       "nota": 9.5,
@@ -9,7 +9,7 @@
       "assistida": true
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Succession",
       "genero": "Drama",
       "nota": 8.9,
@@ -17,7 +17,7 @@
       "assistida": true
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Severance",
       "genero": "Ficção Científica",
       "nota": 8.7,
@@ -25,7 +25,7 @@
       "assistida": false
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "The Wire",
       "genero": "Crime / Drama",
       "nota": 9.3,
@@ -33,7 +33,7 @@
       "assistida": true
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "Fleabag",
       "genero": "Comédia",
       "nota": 8.7,
@@ -41,12 +41,13 @@
       "assistida": false
     },
     {
-      "id": 6,
+      "id": "6",
       "titulo": "Chernobyl",
       "genero": "Drama / História",
       "nota": 9.4,
       "ano": 2019,
       "assistida": true
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
