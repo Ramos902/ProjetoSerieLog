@@ -11,7 +11,11 @@
 
 <script setup>
   import { ref, onMounted } from 'vue';
-  import SerieList from './components/SerieList.vue';
+  import SerieList from './views/SerieListView.vue';
+
+
+
+
   const novaSerie = ref({ titulo: '' });
 
   async function cadastrarSerie() {

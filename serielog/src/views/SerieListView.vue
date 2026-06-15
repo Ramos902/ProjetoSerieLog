@@ -28,6 +28,12 @@
         </div>
       </div>
     </template>
+
+    <SerieModal
+      v-if="serieSelecionada"
+      :serie="serieSelecionada"
+      @close="serieSelecionada = null"
+    />
   </div>
 </template>
 
