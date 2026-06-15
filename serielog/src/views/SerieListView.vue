@@ -9,7 +9,7 @@
       <div class="header-lista">
         <h1 class="titulo-lista">Lista de Séries</h1>
         <router-link to="/series/nova">
-          <button>Adicionar Série</button>
+          <button class="btn-adicionarserie">Adicionar Série</button>
         </router-link>
       </div>
       <div class="list-series">
@@ -64,7 +64,6 @@ onMounted(async () => {
 .header-lista {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 28px;
 }
 
@@ -90,6 +89,21 @@ onMounted(async () => {
   padding-bottom: 12px;
   margin: 0 0 28px;
   border-bottom: 4px solid var(--accent);
+}
+
+.btn-adicionarserie{
+  padding: 10px 18px;
+  font-size: 1.2em;
+  font-weight: 600;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease, transform 0.2s;
+}
+.btn-adicionarserie:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
 }
 
 .list-series {

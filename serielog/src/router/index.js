@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import SerieListView from '../views/SerieListView.vue';
-import SerieFormView from '../views/SerieFormView.vue';
+import SerieForm from '../components/SerieForm.vue';
 import App from '../App.vue';
 
 const routes = [
@@ -16,12 +16,12 @@ const routes = [
     {
         path: '/series/nova',
         name: 'serie-nova',
-        component: SerieFormView
+        component: SerieForm
     },
     {
         path: '/series/:id',
         name: 'serie-detalhe',
-        component: SerieFormView, props: true
+        component: SerieForm, props: true
     },
 ];
 

@@ -47,6 +47,14 @@
       "nota": 9.4,
       "ano": 2019,
       "assistida": true
+    },
+    {
+      "id": "zLpnw6fCpiU",
+      "titulo": "dsadas",
+      "genero": "dsadsa",
+      "nota": 2,
+      "ano": 1998,
+      "assistida": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
