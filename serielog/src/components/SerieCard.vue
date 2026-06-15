@@ -19,8 +19,29 @@
     import { ref } from 'vue';
     import { deleteSerie } from '../services/seriesService';
 
-    try {
-        
+    serie = ref({
+        id: null,
+        titulo: '',
+        genero: '',
+        nota: null,
+        ano: null,
+        assistida: false
+    });
+
+    async function editarSerie() {
+
+        window.location.href = `/series/${serie.id}`;
+    }
+
+    async function excluirSerie() {
+        try {
+            await deleteSerie(props.serie.id);
+            alert('Série deletada com sucesso!');
+            window.location.href = '/series';
+        } catch (error) {
+            console.error('Erro ao deletar série:', error);
+            alert('Ocorreu um erro ao deletar a série. Tente novamente.');
+        }
     }
     
 </script>
@@ -28,3 +49,4 @@
 <style scoped>
 
 </style>
+

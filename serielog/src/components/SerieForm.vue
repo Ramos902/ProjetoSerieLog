@@ -35,6 +35,7 @@
 
             <button type="submit" class="btn-submit">Adicionar Série</button>
         </form>
+        <button class="btn-fechar" @click="$router.push('/series')">X</button>
     </div>
 </template>
 
@@ -64,15 +65,18 @@ async function cadastrarSerie() {
 
 <style scoped>
 .container-serieform {
-  width: 100%;
-  max-width: 560px;
-  display: flex;
-  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 32px;
-  box-sizing: border-box;
+  box-shadow: var(--shadow);
+  background-color: var(--code-bg);
   color: var(--text);
-  background: var(--bg);
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  filter: blur(0%);
 }
 
 .header-serieform {
@@ -168,5 +172,16 @@ input[type="number"]:focus {
 
 .btn-submit:hover {
   transform: translateY(-2px);
+}
+
+.btn-fechar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: var(--text);
+  cursor: pointer;
 }
 </style>
