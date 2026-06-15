@@ -10,6 +10,10 @@ export async function getSeries() {
 
 export async function postSerie(serie) {
     console.log('Enviando série:', serie);
+
+    const resLista = await fetch('http://localhost:3000/series');
+    const lista = await resLista.json();
+    
     try {
         const response = await fetch('http://localhost:3000/series', {
             method: 'POST',
@@ -17,8 +21,12 @@ export async function postSerie(serie) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: Date.now().toString(),
-                titulo: serie.titulo
+                id: lista.length + 1,
+                titulo: serie.titulo,
+                genero: serie.genero,
+                nota: serie.nota,
+                ano: serie.ano,
+                assistida: serie.assistida
             })
         });
         return await response.json();

@@ -6,7 +6,12 @@
     </template>
 
     <template v-else>
-      <h1 class="titulo-lista">Lista de Séries</h1>
+      <div class="header-lista">
+        <h1 class="titulo-lista">Lista de Séries</h1>
+        <router-link to="/series/nova">
+          <button>Adicionar Série</button>
+        </router-link>
+      </div>
       <div class="list-series">
         <div class="card-serie" v-for="serie in series" :key="serie.id">
           <div class="card-header">
@@ -19,21 +24,15 @@
             <span class="ano-serie">{{ serie.ano }}</span>
           </div>
 
-          <span
-            class="assistida-serie"
-            :class="{ 'assistida-sim': serie.assistida, 'assistida-nao': !serie.assistida }"
-          >
+          <span class="assistida-serie"
+            :class="{ 'assistida-sim': serie.assistida, 'assistida-nao': !serie.assistida }">
             {{ serie.assistida ? 'Assistida' : 'Não assistida' }}
           </span>
         </div>
       </div>
     </template>
 
-    <SerieModal
-      v-if="serieSelecionada"
-      :serie="serieSelecionada"
-      @close="serieSelecionada = null"
-    />
+    <SerieModal v-if="serieSelecionada" :serie="serieSelecionada" @close="serieSelecionada = null" />
   </div>
 </template>
 
@@ -60,6 +59,13 @@ onMounted(async () => {
   box-sizing: border-box;
   color: var(--text);
   background: var(--bg);
+}
+
+.header-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
 }
 
 .titulo-loading {
