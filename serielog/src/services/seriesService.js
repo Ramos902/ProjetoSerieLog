@@ -35,3 +35,13 @@ export async function postSerie(serie) {
         return {};
     }
 }
+
+export async function deleteSerie(id) {
+    try {
+        await fetch(`http://localhost:3000/series/${id}`, {
+            method: 'DELETE'
+        });
+    } catch (error) {
+        console.error('Erro ao deletar série:', error);
+    }
+}
