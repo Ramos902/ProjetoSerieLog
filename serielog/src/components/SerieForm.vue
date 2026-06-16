@@ -99,12 +99,7 @@ async function cadastrarSerie() {
 .form-serie {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  background-color: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 24px;
-  box-shadow: var(--shadow);
+  gap: 18px;  
 }
 
 .campo {
