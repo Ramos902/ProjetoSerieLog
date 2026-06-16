@@ -1,5 +1,7 @@
-<template>
-  <div class="container-serielist">
+<template >
+  <div class="container-serielist" :class="{ 'lista-blur': $route.params.id || $route.path === '/series/nova' }">
+    <h1>Bem-vindo ao SerieLog</h1>
+    <span>Integrantes: João Pedro Ramos Moraes & Fernando Costa de Almeida</span>
     <template v-if="loading">
       <h1 class="titulo-loading">SerieLog</h1>
       <p class="texto-loading">Carregando séries...</p>
@@ -13,7 +15,7 @@
         </router-link>
       </div>
       <div class="list-series">
-        <div class="card-serie" v-for="serie in series" :key="serie.id">
+        <div class="card-serie" v-for="serie in series" :key="serie.id" @click="$router.push(`/series/${serie.id}`)">
           <div class="card-header">
             <span class="titulo-serie">{{ serie.titulo }}</span>
             <span class="genero-serie">{{ serie.genero }}</span>
@@ -31,9 +33,8 @@
         </div>
       </div>
     </template>
-
-    <SerieModal v-if="serieSelecionada" :serie="serieSelecionada" @close="serieSelecionada = null" />
   </div>
+  <router-view />
 </template>
 
 <script setup>
@@ -48,9 +49,15 @@ onMounted(async () => {
   console.log('Séries carregadas:', series.value);
   loading.value = false;
 });
+
 </script>
 
 <style scoped>
+.lista-blur {
+    filter: blur(4px);
+    pointer-events: none;
+  }
+
 .container-serielist {
   width: 100%;
   display: flex;

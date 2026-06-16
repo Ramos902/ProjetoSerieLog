@@ -8,6 +8,16 @@ export async function getSeries() {
     }
 }
 
+export async function getSerie(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/series/${id}`);
+        return await response.json();
+    } catch (error) {
+        console.error('Erro ao buscar série:', error);
+        return null;
+    }
+}
+
 export async function postSerie(serie) {
     console.log('Enviando série:', serie);
 

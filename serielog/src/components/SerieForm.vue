@@ -1,78 +1,84 @@
 <template>
-    <div class="container-serieform">
-        <div class="header-serieform">
-            <h1 class="titulo-form">Adicionar Série</h1>
-        </div>
-        <form class="form-serie" @submit.prevent="cadastrarSerie">
-            <div class="campo">
-                <label class="label-campo">Título da série</label>
-                <input type="text" placeholder="Título da série" v-model="novaSerie.titulo" required />
-            </div>
-
-            <div class="campo">
-                <label class="label-campo">Gênero da série</label>
-                <input type="text" placeholder="Gênero da série" v-model="novaSerie.genero" required />
-            </div>
-
-            <div class="linha-dupla">
-                <div class="campo">
-                    <label class="label-campo">Nota da série</label>
-                    <input type="number" placeholder="Nota da série" v-model="novaSerie.nota" min="0" max="10"
-                        step="0.1" required />
-                </div>
-
-                <div class="campo">
-                    <label class="label-campo">Ano de lançamento</label>
-                    <input type="number" placeholder="Ano de lançamento" v-model="novaSerie.ano" min="1900"
-                        max="2100" required />
-                </div>
-            </div>
-
-            <label class="checkbox-assistida">
-                <input type="checkbox" v-model="novaSerie.assistida" />
-                Assistida
-            </label>
-
-            <button type="submit" class="btn-submit">Adicionar Série</button>
-        </form>
+  <div class="container-serieform">
+    <div class="header-serieform">
+      <h1 class="titulo-form">Adicionar Série</h1>
     </div>
+    <form class="form-serie" @submit.prevent="cadastrarSerie">
+      <div class="campo">
+        <label class="label-campo">Título da série</label>
+        <input type="text" placeholder="Título da série" v-model="novaSerie.titulo" required />
+      </div>
+
+      <div class="campo">
+        <label class="label-campo">Gênero da série</label>
+        <input type="text" placeholder="Gênero da série" v-model="novaSerie.genero" required />
+      </div>
+
+      <div class="linha-dupla">
+        <div class="campo">
+          <label class="label-campo">Nota da série</label>
+          <input type="number" placeholder="Nota da série" v-model="novaSerie.nota" min="0" max="10" step="0.1"
+            required />
+        </div>
+
+        <div class="campo">
+          <label class="label-campo">Ano de lançamento</label>
+          <input type="number" placeholder="Ano de lançamento" v-model="novaSerie.ano" min="1900" max="2100" required />
+        </div>
+      </div>
+
+      <label class="checkbox-assistida">
+        <input type="checkbox" v-model="novaSerie.assistida" />
+        Assistida
+      </label>
+
+      <button type="submit" class="btn-submit">Adicionar Série</button>
+    </form>
+    <button class="btn-fechar" @click="$router.push('/series')">X</button>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { postSerie } from '../services/seriesService';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const novaSerie = ref({
-    titulo: '',
-    genero: '',
-    nota: null,
-    ano: null,
-    assistida: false
+  titulo: '',
+  genero: '',
+  nota: null,
+  ano: null,
+  assistida: false
 });
 
 async function cadastrarSerie() {
-    try {
-        await postSerie(novaSerie.value);
-        alert('Série cadastrada com sucesso!');
-        window.location.href = '/series';
-    } catch (error) {
-        console.error('Erro ao cadastrar série:', error);
-        alert('Ocorreu um erro ao cadastrar a série. Tente novamente.');
-    }
+  try {
+    await postSerie(novaSerie.value);
+    alert('Série cadastrada com sucesso!'); 
+    router.push('/series');
+  } catch (error) {
+    console.error('Erro ao cadastrar série:', error);
+    alert('Ocorreu um erro ao cadastrar a série. Tente novamente.');
+  }
 }
 </script>
 
 <style scoped>
 .container-serieform {
-  width: 100%;
-  max-width: 560px;
-  display: flex;
-  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 32px;
-  box-sizing: border-box;
+  box-shadow: var(--shadow);
+  background-color: var(--code-bg);
   color: var(--text);
-  background: var(--bg);
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  filter: blur(0%);
 }
 
 .header-serieform {
@@ -168,5 +174,16 @@ input[type="number"]:focus {
 
 .btn-submit:hover {
   transform: translateY(-2px);
+}
+
+.btn-fechar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: var(--text);
+  cursor: pointer;
 }
 </style>

@@ -1,11 +1,11 @@
-<template>
-  <main>
-    <h1>Bem-vindo ao SerieLog</h1>
-    <span>Integrantes: João Pedro Ramos Moraes & Fernando Costa de Almeida</span>
+<template>    
     <router-view />
-  </main>
 </template>
 
 <script setup>
   
 </script>
+
+<style scoped>
+  
+</style>
