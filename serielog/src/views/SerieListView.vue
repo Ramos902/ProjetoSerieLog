@@ -33,7 +33,6 @@
         </div>
       </div>
     </template>
-    <SerieModal v-if="serieSelecionada" :serie="serieSelecionada" @close="serieSelecionada = null" />
   </div>
   <router-view />
 </template>
@@ -50,6 +49,7 @@ onMounted(async () => {
   console.log('Séries carregadas:', series.value);
   loading.value = false;
 });
+
 </script>
 
 <style scoped>

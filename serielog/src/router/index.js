@@ -15,14 +15,14 @@ const routes = [
         component: SerieListView,
         children: [
             {
-                path: '/series/:id',
-                name: 'serie-detalhe',
-                component: SerieCard, props: true
-            },
-            {
-                path: '/series/nova',
+                path: 'nova',
                 name: 'serie-nova',
                 component: SerieForm
+            },
+            {
+                path: ':id',
+                name: 'serie-detalhe',
+                component: SerieCard, props: true
             }
         ]
     },
