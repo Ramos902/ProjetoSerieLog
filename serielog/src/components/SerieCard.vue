@@ -10,7 +10,7 @@
         </div>
         <div class="acoes-seriecard">
             <button class="btn-editar">Editar</button>
-            <button class="btn-excluir">Excluir</button>
+            <button class="btn-excluir" @click="excluirSerie()">Excluir</button>
         </div>
     </div>
     <div class="container-seriecard" v-else>Carregando...</div>

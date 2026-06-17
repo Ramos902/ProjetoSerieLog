@@ -38,16 +38,26 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { getSeries } from '../services/seriesService';
 
+const router = useRouter();
 const series = ref([]);
 const loading = ref(true);
 
-onMounted(async () => {
+async function carregarSeries() {
+  loading.value = true;
   series.value = await getSeries();
-  console.log('Séries carregadas:', series.value);
   loading.value = false;
+}
+
+onMounted(carregarSeries);
+
+router.afterEach((to) => {
+  if (to.path === '/series') {
+    carregarSeries();
+  }
 });
 
 </script>
