@@ -1,21 +1,4 @@
 {
-  "series": [
-    {
-      "id": "1",
-      "titulo": "Breaking Bad",
-      "genero": "Crime / Drama",
-      "nota": 9.5,
-      "ano": 2008,
-      "assistida": true
-    },
-    {
-      "id": "lwwWeiihBeU",
-      "titulo": "teste",
-      "genero": "teste",
-      "nota": 2,
-      "ano": 1998,
-      "assistida": true
-    }
-  ],
+  "series": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
