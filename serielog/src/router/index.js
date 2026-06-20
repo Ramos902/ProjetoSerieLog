@@ -20,6 +20,11 @@ const routes = [
                 component: SerieForm
             },
             {
+                path: ':id/editar',
+                name: 'serie-editar',
+                component: SerieForm
+            },
+            {
                 path: ':id',
                 name: 'serie-detalhe',
                 component: SerieCard, props: true

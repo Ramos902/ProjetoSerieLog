@@ -1,9 +1,9 @@
 <template>
   <div class="container-serieform">
     <div class="header-serieform">
-      <h1 class="titulo-form">Adicionar Série</h1>
+      <h1 class="titulo-form">{{ modoEdicao ? 'Editar Série' : 'Adicionar Série' }}</h1>
     </div>
-    <form class="form-serie" @submit.prevent="cadastrarSerie">
+    <form class="form-serie" @submit.prevent="salvarSerie">
       <div class="campo">
         <label class="label-campo">Título da série</label>
         <input type="text" placeholder="Título da série" v-model="novaSerie.titulo" required />
@@ -32,18 +32,19 @@
         Assistida
       </label>
 
-      <button type="submit" class="btn-submit">Adicionar Série</button>
+      <button type="submit" class="btn-submit">{{ modoEdicao ? 'Atualizar Série' : 'Adicionar Série' }}</button>
     </form>
     <button class="btn-fechar" @click="$router.push('/series')">X</button>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
-import { postSerie } from '../services/seriesService';
-import { useRouter } from 'vue-router';
+import { onMounted, ref, computed } from 'vue';
+import { postSerie, updateSerie, getSerie } from '../services/seriesService';
+import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
+const route = useRoute();
 
 const novaSerie = ref({
   titulo: '',
@@ -53,14 +54,38 @@ const novaSerie = ref({
   assistida: false
 });
 
-async function cadastrarSerie() {
+const modoEdicao = computed(() => {
+  return route.params.id !== undefined && route.params.id !== 'nova';
+});
+
+onMounted(async () => {
+  if (modoEdicao.value) {
+    const serie = await getSerie(route.params.id);
+    if (serie) {
+      novaSerie.value = {
+        titulo: serie.titulo,
+        genero: serie.genero,
+        nota: serie.nota,
+        ano: serie.ano,
+        assistida: serie.assistida
+      };
+    }
+  }
+});
+
+async function salvarSerie() {
   try {
-    await postSerie(novaSerie.value);
-    alert('Série cadastrada com sucesso!'); 
+    if (modoEdicao.value) {
+      await updateSerie(route.params.id, novaSerie.value);
+      alert('Série atualizada com sucesso!');
+    } else {
+      await postSerie(novaSerie.value);
+      alert('Série cadastrada com sucesso!'); 
+    }
     router.push('/series');
   } catch (error) {
-    console.error('Erro ao cadastrar série:', error);
-    alert('Ocorreu um erro ao cadastrar a série. Tente novamente.');
+    console.error('Erro ao salvar série:', error);
+    alert('Ocorreu um erro ao salvar a série. Tente novamente.');
   }
 }
 </script>

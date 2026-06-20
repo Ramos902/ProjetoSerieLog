@@ -9,7 +9,7 @@
             <p class="assistida-seriecard">Assistida: {{ serie.assistida ? 'Sim' : 'Não' }}</p>
         </div>
         <div class="acoes-seriecard">
-            <button class="btn-editar">Editar</button>
+            <button class="btn-editar" @click="$router.push(`/series/${serie.id}/editar`)">Editar</button>
             <button class="btn-excluir" @click="excluirSerie()">Excluir</button>
         </div>
     </div>

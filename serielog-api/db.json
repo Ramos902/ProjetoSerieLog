@@ -1,4 +1,53 @@
 {
-  "series": [],
+  "series": [
+    {
+      "id": "BEllzGTVlnQ",
+      "titulo": "Breaking Bad",
+      "genero": "Drama/Crime",
+      "nota": 9.5,
+      "ano": 2008,
+      "assistida": true
+    },
+    {
+      "id": "aBcD1EfGhIj",
+      "titulo": "The Crown",
+      "genero": "Drama/Histórico",
+      "nota": 9,
+      "ano": 2016,
+      "assistida": true
+    },
+    {
+      "id": "KlMnOp2QrSt",
+      "titulo": "Stranger Things",
+      "genero": "Teste",
+      "nota": 8.7,
+      "ano": 2016,
+      "assistida": false
+    },
+    {
+      "id": "UvWxYz3AbCd",
+      "titulo": "The Witcher",
+      "genero": "Fantasia/Ação",
+      "nota": 8.2,
+      "ano": 2019,
+      "assistida": false
+    },
+    {
+      "id": "EfGhIj4KlMn",
+      "titulo": "Peaky Blinders",
+      "genero": "Drama/Crime",
+      "nota": 8.8,
+      "ano": 2013,
+      "assistida": true
+    },
+    {
+      "id": "OpQrSt5UvWx",
+      "titulo": "The Boys",
+      "genero": "Ação/Ficção Científica",
+      "nota": 8.5,
+      "ano": 2019,
+      "assistida": false
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

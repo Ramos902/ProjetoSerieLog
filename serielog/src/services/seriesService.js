@@ -46,6 +46,29 @@ export async function postSerie(serie) {
     }
 }
 
+export async function updateSerie(id, serie) {
+    try {
+        const response = await fetch(`http://localhost:3000/series/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+                titulo: serie.titulo,
+                genero: serie.genero,
+                nota: serie.nota,
+                ano: serie.ano,
+                assistida: serie.assistida
+            })
+        });
+        return await response.json();
+    } catch (error) {
+        console.error('Erro ao atualizar série:', error);
+        return {};
+    }
+}
+
 export async function deleteSerie(id) {
     try {
         await fetch(`http://localhost:3000/series/${id}`, {
