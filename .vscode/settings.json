@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^if \\(-not \\(Test-Path \"serielog-front\"\\)\\) \\{ New-Item -ItemType Directory -Path \"serielog-front\" \\| Out-Null \\}; Get-ChildItem -LiteralPath \"serielog\" -Force \\| ForEach-Object \\{ Move-Item -LiteralPath \\$_\\.FullName -Destination \"serielog-front\" -Force \\}$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
