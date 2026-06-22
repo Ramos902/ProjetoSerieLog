@@ -14,8 +14,10 @@
           <button class="btn-adicionarserie">Adicionar Série</button>
         </router-link>
       </div>
+      <FiltroSeries v-model="filtros" :series="series" />
+
       <div class="list-series">
-        <div class="card-serie" v-for="serie in series" :key="serie.id" @click="$router.push(`/series/${serie.id}`)">
+        <div class="card-serie" v-for="serie in seriesFiltradas" :key="serie.id" @click="$router.push(`/series/${serie.id}`)">
           <div class="card-header">
             <span class="titulo-serie">{{ serie.titulo }}</span>
             <span class="genero-serie">{{ serie.genero }}</span>
@@ -38,13 +40,37 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { getSeries } from '../services/seriesService';
+import FiltroSeries from '../components/FiltroSeries.vue';
 
 const router = useRouter();
 const series = ref([]);
 const loading = ref(true);
+
+const filtros = ref({ busca: '', genero: '', assistida: ''});
+
+const seriesFiltradas = computed(() => {
+  let resultado = [...series.value];
+
+  if (filtros.value.busca) {
+    const busca = filtros.value.busca.toLowerCase();
+    resultado = resultado.filter(s => s.titulo.toLowerCase().includes(busca));
+  }
+
+  if (filtros.value.genero) {
+    resultado = resultado.filter(s => s.genero === filtros.value.genero);
+  }
+
+  if (filtros.value.assistida === 'sim') {
+    resultado = resultado.filter(s => s.assistida);
+  } else if (filtros.value.assistida === 'nao') {
+    resultado = resultado.filter(s => !s.assistida);
+  }
+
+  return resultado;
+});
 
 async function carregarSeries() {
   loading.value = true;
