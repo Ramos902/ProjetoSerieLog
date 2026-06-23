@@ -12,7 +12,7 @@
       "id": "aBcD1EfGhIj",
       "titulo": "The Crown",
       "genero": "Drama/Histórico",
-      "nota": 9,
+      "nota": 2,
       "ano": 2016,
       "assistida": true
     },
@@ -47,6 +47,14 @@
       "nota": 8.5,
       "ano": 2019,
       "assistida": false
+    },
+    {
+      "id": "9SoqlGWJtzw",
+      "titulo": "Teste",
+      "genero": "Teste",
+      "nota": 2,
+      "ano": 1998,
+      "assistida": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
