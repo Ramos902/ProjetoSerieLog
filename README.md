@@ -48,8 +48,6 @@ cd serielog-front && npm run dev
 | PUT | `/series/:id` | Atualiza uma série |
 | DELETE | `/series/:id` | Remove uma série |
 
-## Autor
-
 ## Autores
 
 <table>
